@@ -1,0 +1,575 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecodeLabs | Project 2: Backend API Development</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fa-solid fa-brain text-cyan me-2"></i>Decode<span class="text-cyan">Labs</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#methods">HTTP Methods</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#validation">Validation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#statuscodes">Status Codes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#security">Security</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-sm btn-outline-cyan px-3" href="#contact">
+                            <i class="fa-solid fa-id-badge me-1"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-lg-7 text-center text-lg-start">
+                    <div class="badge-pill mb-3">
+                        <i class="fa-solid fa-bolt text-warning me-1"></i>
+                        Batch 2026 | Full Stack Industrial Training Kit
+                    </div>
+
+                    <h1 class="display-4 fw-bold text-white mb-3">
+                        Project 2: <span class="text-cyan">Backend API Development</span>
+                    </h1>
+
+                    <p class="lead text-muted mb-4">
+                        "Project 1 was the skin. Project 2 is the life." Step into the role of a Full Stack Developer at DecodeLabs and master the application's brain through pure API logic.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#overview" class="btn btn-cyan btn-lg px-4">
+                            <i class="fa-solid fa-compass me-2"></i>Explore Project
+                        </a>
+                        <a href="#architecture" class="btn btn-outline-light btn-lg px-4">
+                            View Architecture
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 mt-5 mt-lg-0 text-center">
+                    <div class="hero-card p-4 rounded-4 shadow-lg border border-secondary">
+
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="badge bg-success-subtle text-success px-2 py-1">
+                                System Pulse: Stable
+                            </span>
+                            <span class="font-monospace text-muted small">
+                                SPEC. REV. 2.1
+                            </span>
+                        </div>
+
+                        <div class="code-preview text-start p-3 rounded font-monospace small mb-3">
+                            <span class="text-purple">POST</span>
+                            <span class="text-white">/api/v1/users</span><br>
+                            {<br>
+                            &nbsp;&nbsp;<span class="text-cyan">"status"</span>: <span class="text-warning">201</span>,<br>
+                            &nbsp;&nbsp;<span class="text-cyan">"message"</span>: <span class="text-success">"Neural link established"</span><br>
+                            }
+                        </div>
+
+                        <div class="text-muted small text-start">
+                            <i class="fa-solid fa-server text-cyan me-1"></i>
+                            Bridge user interaction with server-side processing.
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section id="overview" class="py-5 bg-darker">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">Project Overview & Goals</h2>
+                <p class="text-muted">
+                    Engineering the backend API and ensuring absolute system reliability.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="card h-100 bg-card border-secondary p-4 rounded-4">
+                        <div class="icon-box text-cyan mb-3">
+                            <i class="fa-solid fa-bullseye fa-2x"></i>
+                        </div>
+                        <h4 class="text-white h5 fw-bold">Primary Goal</h4>
+                        <p class="text-muted">
+                            Develop a simple backend API to handle application logic, bridging the gap between client interaction and server processing.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 bg-card border-secondary p-4 rounded-4">
+                        <div class="icon-box text-cyan mb-3">
+                            <i class="fa-solid fa-list-check fa-2x"></i>
+                        </div>
+                        <h4 class="text-white h5 fw-bold">Key Requirements</h4>
+                        <ul class="text-muted ps-3 mb-0">
+                            <li>Create API endpoints (GET / POST)</li>
+                            <li>Handle user input and structured responses</li>
+                            <li>Validate basic data thoroughly</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 bg-card border-secondary p-4 rounded-4">
+                        <div class="icon-box text-cyan mb-3">
+                            <i class="fa-solid fa-brain fa-2x"></i>
+                        </div>
+                        <h4 class="text-white h5 fw-bold">Core Skills</h4>
+                        <p class="text-muted">
+                            Master backend development, server-side logic, RESTful concepts, and data validation protocols.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture" class="py-5">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">
+                    The Nervous System: Architecture & IPO Model
+                </h2>
+                <p class="text-muted">
+                    Understanding latency, statelessness, and data flow across the network void.
+                </p>
+            </div>
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+                    <h3 class="text-white fw-bold mb-3">
+                        The IPO Model (Input-Process-Output)
+                    </h3>
+
+                    <p class="text-muted">
+                        Control the inputs. Predict the outputs. The system takes user requirements via data streams, processes them through neural computational blocks, and provisions accurate responses via feedback loops.
+                    </p>
+
+                    <div class="mt-4">
+
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="me-3 text-cyan">
+                                <i class="fa-solid fa-arrow-right-to-bracket fa-lg mt-1"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white mb-1">1. Latency Management</h5>
+                                <p class="text-muted small mb-0">
+                                    Minimizing transmission time across the network void between browser client and server API.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="me-3 text-cyan">
+                                <i class="fa-solid fa-shield-halved fa-lg mt-1"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white mb-1">2. Statelessness</h5>
+                                <p class="text-muted small mb-0">
+                                    Ensuring every request contains all necessary context, giving the system the ability to regenerate and restart seamlessly.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <div class="me-3 text-cyan">
+                                <i class="fa-solid fa-rotate fa-lg mt-1"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white mb-1">3. Resilience</h5>
+                                <p class="text-muted small mb-0">
+                                    Isolating failures using circuit breakers and robust error-handling protocols.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-card p-4 rounded-4 border border-secondary">
+                        <h4 class="text-white mb-3 font-monospace small text-cyan">
+                            // DATA EXCHANGE: JSON
+                        </h4>
+
+                        <p class="text-muted small mb-3">
+                            The Neurotransmitter: Lightweight, machine-parsable, and human-readable fractal scale data exchange.
+                        </p>
+
+                        <pre class="bg-darker p-3 rounded text-light font-monospace small mb-0"><code>{
+  "user": {
+    "id": 101,
+    "profile": {
+      "role": "admin",
+      "department": "Software Engineering"
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="methods" class="py-5 bg-darker">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">
+                    Anatomy of Action: HTTP Methods & RESTful Naming
+                </h2>
+                <p class="text-muted">
+                    Resources are Nouns. Methods are Verbs.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 bg-card border-secondary p-4 text-center rounded-4 method-card">
+                        <div class="text-cyan mb-3">
+                            <i class="fa-solid fa-eye fa-2x"></i>
+                        </div>
+                        <h4 class="text-white fw-bold">GET</h4>
+                        <p class="text-muted small">Retrieval. Safe. Idempotent.</p>
+                        <span class="badge bg-secondary-subtle text-light mt-auto">/users</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 bg-card border-secondary p-4 text-center rounded-4 method-card">
+                        <div class="text-warning mb-3">
+                            <i class="fa-solid fa-circle-plus fa-2x"></i>
+                        </div>
+                        <h4 class="text-white fw-bold">POST</h4>
+                        <p class="text-muted small">Creation. Unsafe. Non-idempotent.</p>
+                        <span class="badge bg-secondary-subtle text-light mt-auto">/users</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 bg-card border-secondary p-4 text-center rounded-4 method-card">
+                        <div class="text-info mb-3">
+                            <i class="fa-solid fa-pen-to-square fa-2x"></i>
+                        </div>
+                        <h4 class="text-white fw-bold">PUT</h4>
+                        <p class="text-muted small">Update. Complete replacement.</p>
+                        <span class="badge bg-secondary-subtle text-light mt-auto">/users/{id}</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 bg-card border-secondary p-4 text-center rounded-4 method-card">
+                        <div class="text-danger mb-3">
+                            <i class="fa-solid fa-trash fa-2x"></i>
+                        </div>
+                        <h4 class="text-white fw-bold">DELETE</h4>
+                        <p class="text-muted small">Removal of designated resources.</p>
+                        <span class="badge bg-secondary-subtle text-light mt-auto">/users/{id}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="validation" class="py-5">
+        <div class="container py-4">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+                    <div class="badge-pill mb-3">
+                        <i class="fa-solid fa-shield text-danger me-1"></i>
+                        The Gatekeeper Rule
+                    </div>
+
+                    <h2 class="fw-bold text-white mb-3">
+                        "Never Trust the Client."
+                    </h2>
+
+                    <p class="text-muted mb-4">
+                        Just like the blood-brain barrier protecting biological tissue against pathogens, your API must filter malformed data before it reaches the database.
+                    </p>
+
+                    <div class="mb-3">
+                        <h5 class="text-white">
+                            <i class="fa-solid fa-check text-cyan me-2"></i>
+                            Syntactic Validation
+                        </h5>
+                        <p class="text-muted small">
+                            Is the format correct? Checked against template data structure standards.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h5 class="text-white">
+                            <i class="fa-solid fa-check text-cyan me-2"></i>
+                            Semantic Validation
+                        </h5>
+                        <p class="text-muted small">
+                            Is the logic valid? Confirming valid operation pathways through the sensor gate.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-card p-4 rounded-4 border border-secondary">
+
+                        <h4 class="text-white mb-3 font-monospace small text-cyan">
+                            // TEST API VALIDATION
+                        </h4>
+
+                        <form id="apiValidationForm">
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">
+                                    Username (Noun Resource)
+                                </label>
+                                <input type="text" id="usernameInput" class="form-control bg-darker text-light border-secondary" placeholder="e.g. haseeb_malik">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">
+                                    Email Address
+                                </label>
+                                <input type="email" id="emailInput" class="form-control bg-darker text-light border-secondary" placeholder="e.g. user@decodelabs.tech">
+                            </div>
+
+                            <button type="submit" class="btn btn-cyan w-100">
+                                Send Test POST Request
+                            </button>
+
+                        </form>
+
+                        <div id="validationResult" class="mt-3 p-3 rounded font-monospace small d-none"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="statuscodes" class="py-5 bg-darker">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">
+                    Communicating State: Essential Status Codes
+                </h2>
+                <p class="text-muted">
+                    Don't force the client to guess. Use semantic response codes for absolute integrity.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-cyan fw-bold mb-1">201</h3>
+                        <h5 class="text-white h6">Created</h5>
+                        <p class="text-muted small mb-0">Resource successfully provisioned.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-cyan fw-bold mb-1">204</h3>
+                        <h5 class="text-white h6">No Content</h5>
+                        <p class="text-muted small mb-0">Successful request with no body returned.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-warning fw-bold mb-1">400</h3>
+                        <h5 class="text-white h6">Bad Request</h5>
+                        <p class="text-muted small mb-0">Syntactic or validation failure.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-warning fw-bold mb-1">401</h3>
+                        <h5 class="text-white h6">Unauthorized</h5>
+                        <p class="text-muted small mb-0">Authentication credentials missing/invalid.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-danger fw-bold mb-1">403</h3>
+                        <h5 class="text-white h6">Forbidden</h5>
+                        <p class="text-muted small mb-0">Insufficient authorization scope.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-danger fw-bold mb-1">404</h3>
+                        <h5 class="text-white h6">Not Found</h5>
+                        <p class="text-muted small mb-0">Requested resource does not exist.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-danger fw-bold mb-1">429</h3>
+                        <h5 class="text-white h6">Too Many Requests</h5>
+                        <p class="text-muted small mb-0">Rate limit threshold exceeded.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-card border-secondary p-3 rounded-4">
+                        <h3 class="text-danger fw-bold mb-1">500</h3>
+                        <h5 class="text-white h6">Internal Error</h5>
+                        <p class="text-muted small mb-0">Server-side execution fault.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="security" class="py-5">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">
+                    Autonomic Defense: Security & Resilience
+                </h2>
+                <p class="text-muted">
+                    Anatomical engineering of self-healing systems.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="card h-100 bg-card border-secondary p-4 rounded-4">
+                        <h4 class="text-white h5 fw-bold mb-3">
+                            <i class="fa-solid fa-id-card text-cyan me-2"></i>
+                            Authentication (AuthN)
+                        </h4>
+                        <p class="text-muted mb-0">
+                            Determining identity. Verifying "Who are you?" through secure tokens and credentials.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 bg-card border-secondary p-4 rounded-4">
+                        <h4 class="text-white h5 fw-bold mb-3">
+                            <i class="fa-solid fa-key text-cyan me-2"></i>
+                            Authorization (AuthZ)
+                        </h4>
+                        <p class="text-muted mb-0">
+                            Determining permissions. Verifying "What can you do?" via scope validation and role-based access.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 bg-card border-secondary p-4 rounded-4">
+                        <h4 class="text-white h5 fw-bold mb-3">
+                            <i class="fa-solid fa-network-wired text-cyan me-2"></i>
+                            Circuit Breakers
+                        </h4>
+                        <p class="text-muted mb-0">
+                            Isolating failure across microservices and preventing cascading system outages.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 bg-darker">
+        <div class="container py-4">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+
+                    <h2 class="fw-bold text-white mb-3">
+                        Build with Integrity. Validate Everything.
+                    </h2>
+
+                    <p class="text-muted mb-4">
+                        Your journey to becoming a professional developer begins right here, right now, with the very first API endpoint you deploy.
+                    </p>
+
+                    <div class="d-flex justify-content-center gap-4 flex-wrap text-muted">
+                        <div>
+                            <i class="fa-solid fa-phone text-cyan me-2"></i>
+                            +91 89330 06408
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-envelope text-cyan me-2"></i>
+                            decodelabs.tech@gmail.com
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-globe text-cyan me-2"></i>
+                            www.decodelabs.tech
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-4 border-top border-secondary text-center">
+        <div class="container">
+            <p class="text-muted small mb-0">
+                © 2026 All Rights Reserved. Designed & Developed by
+                <span class="text-cyan fw-semibold">Haseeb Ahmed Malik</span>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
